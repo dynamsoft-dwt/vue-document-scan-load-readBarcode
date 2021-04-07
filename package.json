@@ -3,14 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
+    "serve": "ncp node_modules/dwt/dist public/dwt-resources && vue-cli-service serve",
+    "build": "vue-cli-service build&& ncp node_modules/dwt/dist dist/dwt-resources",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
-    "@types/dwt": "^15.0.1",
     "core-js": "^2.6.5",
-    "dwt": "^15.0.3",
+    "dwt": "^16.2.4",
+    "ncp": "^2.0.0",
     "vue": "^2.6.10"
   },
   "devDependencies": {
