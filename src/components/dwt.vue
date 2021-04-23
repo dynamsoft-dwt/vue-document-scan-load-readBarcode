@@ -36,36 +36,41 @@ export default {
     /**
      * ResourcesPath & ProductKey must be set in order to use the library!
      */
-    Dynamsoft.WebTwainEnv.ResourcesPath = "dwt-resources";
-    Dynamsoft.WebTwainEnv.AutoLoad = false;
-    Dynamsoft.WebTwainEnv.ProductKey =
-      "t0137mQIAAHI1x4Exx1yHutcIgytF3YIMn1u5BUXWEAoT47PaEi8YAiJyjK45smpv91peVpFR0Tp0lZgUyaysKT4M+O4Kv8KsE4PWRf0pL+lk5DCvbnQY/HnnjeMiZiRgdG36XLiZXeZ5zkYCRtdmmgfmv5c+Cu4jD++MBIyuzchzNTTLJaf2BYSTgr4=";
-    Dynamsoft.WebTwainEnv.Containers = [
+    Dynamsoft.DWT.ResourcesPath = "dwt-resources";
+    Dynamsoft.DWT.AutoLoad = false;
+    Dynamsoft.DWT.ProductKey =
+      "t00901wAAAHLaBUFRTo2yd4j5kM7tVOFK0UTNALrlmxVynUzusXReXoMhtfwomBsrDyO0RtG/1IIjtm/Xfo9l1BixdqXSbHP+LiSsdxvwDsoCkSYQOrNQ7QFyUiux";
+    Dynamsoft.DWT.Containers = [
       { ContainerId: "dwtcontrolContainer", Width: "550px", Height: "513px" },
     ];
-    Dynamsoft.WebTwainEnv.RegisterEvent("OnWebTwainReady", () => {
+    Dynamsoft.DWT.RegisterEvent("OnWebTwainReady", () => {
       this.Dynamsoft_OnReady();
     });
   },
   mounted() {
-    Dynamsoft.WebTwainEnv.Load();
+    Dynamsoft.DWT.Load();
   },
   methods: {
     Dynamsoft_OnReady() {
-      this.DWObject = Dynamsoft.WebTwainEnv.GetWebTwain("dwtcontrolContainer");
+      this.DWObject = Dynamsoft.DWT.GetWebTwain("dwtcontrolContainer");
     },
 
     // Acquire Image
     acquireImage() {
-      this.DWObject.IfDisableSourceAfterAcquire = true;
-      this.DWObject.AcquireImage();
+        var _this = this;
+      _this.DWObject.SelectSource(function () {
+		_this.DWObject.IfDisableSourceAfterAcquire = true;
+		_this.DWObject.AcquireImage();
+     }, function () {
+		alert('SelectSource failed!');
+     });
     },
 
     // Load Images
     loadImage() {
       this.DWObject.IfShowFileDialog = true;
       this.DWObject.Addon.PDF.SetResolution(300);
-      this.DWObject.Addon.PDF.SetConvertMode(Dynamsoft.EnumDWT_ConvertMode.CM_RENDERALL);
+      this.DWObject.Addon.PDF.SetConvertMode(Dynamsoft.DWT.EnumDWT_ConvertMode.CM_RENDERALL);
       this.DWObject.LoadImageEx("", 5);
     },
 
@@ -80,7 +85,7 @@ export default {
         /**
          * Setting up the barcode reader
          */
-        settings.barcodeFormatIds = Dynamsoft.EnumBarcodeFormat.BF_ALL;
+        settings.barcodeFormatIds = Dynamsoft.DBR.EnumBarcodeFormat.BF_ALL;
         settings.deblurLevel = 9;
         settings.expectedBarcodesCount = 512;
         settings.scaleDownThreshold = 48000;
