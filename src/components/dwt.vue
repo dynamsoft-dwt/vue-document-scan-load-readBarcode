@@ -34,12 +34,31 @@ export default {
   },
   created() {
     /**
-     * ResourcesPath & ProductKey must be set in order to use the library!
+     * ResourcesPath must be set in order to use the library!
      */
     Dynamsoft.DWT.ResourcesPath = "dwt-resources";
     Dynamsoft.DWT.AutoLoad = false;
-    Dynamsoft.DWT.ProductKey =
-      "t00901wAAAHLaBUFRTo2yd4j5kM7tVOFK0UTNALrlmxVynUzusXReXoMhtfwomBsrDyO0RtG/1IIjtm/Xfo9l1BixdqXSbHP+LiSsdxvwDsoCkSYQOrNQ7QFyUiux";
+	
+    /** v17.1 LICENSE ALERT - README
+     * The library requires a license to work, the APIs organizationID and handshakeCode specify how to acquire a license.
+     * If nothing is specified, a 7-day (public) trial license will be used by default which is the case in this sample.
+     * Note that network connection is required for this license to work.
+     */
+
+    /* When using your own license, please uncomment the following lines and fill in your own information. */
+    /* For more information, please refer to https://www.dynamsoft.com/license-tracking/docs/about/licensefaq.html?ver=latest#how-to-use-a-trackable-license. */
+
+    // Dynamsoft.DWT.organizationID = "YOUR-ORGANIZATION-ID";
+    // Dynamsoft.DWT.handshakeCode = "A-SPECIFIC-HANDSHAKECODE";
+    // Dynamsoft.DWT.sessionPassword = "PASSWORD-TO-PROTECT-YOUR-LICENSE"; // Important field to protect your license.
+    // Dynamsoft.DWT.licenseServer = ["YOUR-OWN-MAIN-LTS", "YOUR-OWN-STANDBY-LTS"]; // Ignore this line if you are using Dynamsoft-hosting LTS
+
+    /* The API "ProductKey" is an alternative way to license the library, the major difference is that it does not require a network. Contact support@dynamsoft.com for more information. */
+
+    // Dynamsoft.DWT.ProductKey = "YOUR-PRODUCT-KEY";
+
+    /** LICENSE ALERT - THE END */
+	
     Dynamsoft.DWT.Containers = [
       { ContainerId: "dwtcontrolContainer", Width: "550px", Height: "513px" },
     ];
@@ -106,8 +125,8 @@ export default {
               var barcodeText = [];
               for (var i = 0; i < results.length; i++) {
                 var result = results[i];
-                var Barcode_text = result.BarcodeText;
-                var format = result.BarcodeFormatString;
+                var Barcode_text = result.barcodeText;
+                var format = result.barcodeFormatString;
                 barcodeText.push("barcode[" + (i + 1) + "]: " + "<br />");
                 barcodeText.push("<strong>" + Barcode_text + "</strong>");
                 barcodeText.push("<br />format:" + format + "<br />");
