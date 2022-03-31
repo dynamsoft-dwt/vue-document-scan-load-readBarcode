@@ -36,9 +36,9 @@ export default {
     /**
      * ResourcesPath & ProductKey must be set in order to use the library!
      */
-    Dynamsoft.DWT.ResourcesPath = "dwt-resources";
+    Dynamsoft.DWT.ResourcesPath = "/dwt-resources";
     Dynamsoft.DWT.AutoLoad = false;
-    Dynamsoft.DWT.ProductKey = 't00901wAAAFGokK55GCTHFf8RWZ8bKjNRD1O+Gf0xA6MUdkmYI6zSueLnBjy55bNxl/YW1HkZykS/h0xYHBuFFwIDbexR567425Cx3hnuwAewN5DyXtRd/ATLnyy+';
+    Dynamsoft.DWT.ProductKey = 't00891wAAAKFs7VjcTP0UG20tzpw0mVsqmlIukOMDImLaclVr8l5ReM0df50rg9RNaH7A9mwLt6khlmvJyIqEixQeDZAz0iBvgzHPOXcQA/gbSOY51F46ANDILMM=';
     Dynamsoft.DWT.Containers = [
       { ContainerId: "dwtcontrolContainer", Width: "550px", Height: "513px" },
     ];
