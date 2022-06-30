@@ -3,7 +3,7 @@
     <button id="btnScan" @click="acquireImage()" style="margin: 20px">Scan</button>
     <button id="btnLoad" @click="loadImage()" style="margin-right: 20px">Load</button>
     <button id="btnReadBarcode" @click="readBarcode()">Read Barcode</button>
-    <div id="dwtcontrolContainer"></div>
+    <div id="dwtcontrolContainer" style="width:550px;margin: 0 auto;"></div>
     <div
       id="divNoteMessage"
       ondblclick="this.innerHTML='';"
@@ -38,7 +38,7 @@ export default {
      */
     Dynamsoft.DWT.ResourcesPath = "/dwt-resources";
     Dynamsoft.DWT.AutoLoad = false;
-    Dynamsoft.DWT.ProductKey = 't00891wAAAKFs7VjcTP0UG20tzpw0mVsqmlIukOMDImLaclVr8l5ReM0df50rg9RNaH7A9mwLt6khlmvJyIqEixQeDZAz0iBvgzHPOXcQA/gbSOY51F46ANDILMM=';
+    Dynamsoft.DWT.ProductKey = 't0078lQAAAK/ZNBgqN1cFmBBaLYa3LiG4SDylHDPRco+UvWI+Tp4Rfekc6UVBU0VdL0bdydIHi2MiOAOUlKmLyJpEwlITGkUChWTejhsEwx9k';
     Dynamsoft.DWT.Containers = [
       { ContainerId: "dwtcontrolContainer", Width: "550px", Height: "513px" },
     ];
