@@ -38,7 +38,7 @@ export default {
      */
     Dynamsoft.DWT.ResourcesPath = "/dwt-resources";
     Dynamsoft.DWT.AutoLoad = false;
-    Dynamsoft.DWT.ProductKey = 't0078lQAAAK/ZNBgqN1cFmBBaLYa3LiG4SDylHDPRco+UvWI+Tp4Rfekc6UVBU0VdL0bdydIHi2MiOAOUlKmLyJpEwlITGkUChWTejhsEwx9k';
+    Dynamsoft.DWT.ProductKey = 't01016QAAAAoBwvD4ZKWetM6DJw6PEAPeUTZiK+QMGaGEZCAO9w6nLX0iKUdCmlpOCFhxTuJI4i1BSwiSsi85vFD1kyNTldw22LWMTT9UfppjxHg//uT02qbRNEx2kylwJnO7AICBLsU=';
     Dynamsoft.DWT.Containers = [
       { ContainerId: "dwtcontrolContainer", Width: "550px", Height: "513px" },
     ];
@@ -56,13 +56,15 @@ export default {
 
     // Acquire Image
     acquireImage() {
-        var _this = this;
-      _this.DWObject.SelectSource(function () {
-		_this.DWObject.IfDisableSourceAfterAcquire = true;
-		_this.DWObject.AcquireImage();
-     }, function () {
-		alert('SelectSource failed!');
-     });
+      this.DWObject.SelectSourceAsync()
+        .then(
+          () => {return this.DWObject.AcquireImageAsync({
+            IfDisableSourceAfterAcquire: true
+          })}
+        )
+        .catch(
+          (exp) =>{alert(exp.message)}
+        );
     },
 
     // Load Images
@@ -80,7 +82,7 @@ export default {
           alert("Please scan or load an image first.");
           return;
         }
-        var settings = await this.DWObject.Addon.BarcodeReader.getRuntimeSettings();
+        const settings = await this.DWObject.Addon.BarcodeReader.getRuntimeSettings();
         /**
          * Setting up the barcode reader
          */
@@ -90,14 +92,14 @@ export default {
         settings.scaleDownThreshold = 48000;
         /** End of settings */
         await this.DWObject.Addon.BarcodeReader.updateRuntimeSettings(settings);
-        var index = this.DWObject.CurrentImageIndexInBuffer;
-        var objDiv = document.getElementById("divNoteMessage");
+        const index = this.DWObject.CurrentImageIndexInBuffer;
+        const objDiv = document.getElementById("divNoteMessage");
         this.DWObject.Addon.BarcodeReader.decode(index).then(
           function (results) {
             //This is the function called when barcode is read successfully
             //Retrieve barcode details
-            var _now = new Date().toLocaleTimeString() + "<br />";
-            objDiv.innerHTML += _now;
+            const now = new Date().toLocaleTimeString() + "<br />";
+            objDiv.innerHTML += now;
             if (results.length == 0) {
               objDiv.innerHTML += "Looking for a barcode of the specified type...<br />";
             } else {
