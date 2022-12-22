@@ -38,7 +38,7 @@ export default {
      */
     Dynamsoft.DWT.ResourcesPath = "/dwt-resources";
     Dynamsoft.DWT.AutoLoad = false;
-    Dynamsoft.DWT.ProductKey = 't01016QAAAAoBwvD4ZKWetM6DJw6PEAPeUTZiK+QMGaGEZCAO9w6nLX0iKUdCmlpOCFhxTuJI4i1BSwiSsi85vFD1kyNTldw22LWMTT9UfppjxHg//uT02qbRNEx2kylwJnO7AICBLsU=';
+    Dynamsoft.DWT.ProductKey = 't00901wAAAGi71cktM2NG4toMEJ/g3egqded0C1EBhYMai/rMb+9PivaU9+1xp3qau4200cRaQBLw3fqD/MrH0+LKNIdtwU4rfxe0NzcomBYGKCsgTgto+AWw+SxV';
     Dynamsoft.DWT.Containers = [
       { ContainerId: "dwtcontrolContainer", Width: "550px", Height: "513px" },
     ];
