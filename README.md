@@ -1,21 +1,29 @@
 # vue-simple-document-scan
 
+This project demonstrates how to build a Vue scanning project with [Dynamsoft Web TWAIN SDK](https://www.dynamsoft.com/web-twain/overview/).
+
 ## Usage
-Install Vue CLI:
+1. Apply for a [30-day free trial license](https://www.dynamsoft.com/customer/license/trialLicense?product=dwt) of Dynamic Web TWAIN.
 
-```
-npm install -g @vue/cli
-```
+2. Update the license key in `document-scanner.component.ts` file:
 
-Install dependencies:
+   ```
+   Dynamsoft.DWT.ProductKey = "LICENSE-KEY";
+   ```
 
-```
-npm install
-```
+3. Install the dependencies:
 
-Run the app:
+   ```
+   npm install
+   ```
 
-```
-npm run serve
-```
+4. Run the application as follows:
 
+   ```
+   npm run serve
+   ```
+
+
+## Build
+
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
