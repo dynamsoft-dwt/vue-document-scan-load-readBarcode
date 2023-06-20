@@ -24,7 +24,7 @@
 import Dynamsoft from "dwt";
 
 export default {
-  name: "dwt",
+  name: "web-twain",
   data() {
     return {
       title: "Using Dynamic Web TWAIN in Vue Project",
@@ -38,7 +38,7 @@ export default {
      */
     Dynamsoft.DWT.ResourcesPath = "/dwt-resources";
     Dynamsoft.DWT.AutoLoad = false;
-    Dynamsoft.DWT.ProductKey = 't0100CgEAAI/Kalkph+rANa7xvFeYzy2ZJaF0sV188r8K/knF/akFHHvAHdHAtGHQJrpxP+nqlDJkXOD65sKMbWhdmp6b7QgCWLr5A0huNQqu+DW0v3gAgcFwAvEGSBQj0nwHo981mg==';
+    Dynamsoft.DWT.ProductKey = 't0106KwEAAHS5i/IQMtobY1KiE0ohnvp0rYQ6Odqe3YSTuwoeLvNCke4y7UccAqchMe1OUgSW/vPP42qfMZqjyorwWR/DnRUBbMP5AyjcPbyr+HVod/EEDJNDB2wFSOh/Xnlxg6lISUkO19Q75w==';
     Dynamsoft.DWT.Containers = [
       { ContainerId: "dwtcontrolContainer", Width: "550px", Height: "513px" },
     ];
