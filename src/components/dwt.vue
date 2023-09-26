@@ -38,7 +38,7 @@ export default {
      */
     Dynamsoft.DWT.ResourcesPath = "/dwt-resources";
     Dynamsoft.DWT.AutoLoad = false;
-    Dynamsoft.DWT.ProductKey = 't0106KwEAAHS5i/IQMtobY1KiE0ohnvp0rYQ6Odqe3YSTuwoeLvNCke4y7UccAqchMe1OUgSW/vPP42qfMZqjyorwWR/DnRUBbMP5AyjcPbyr+HVod/EEDJNDB2wFSOh/Xnlxg6lISUkO19Q75w==';
+    Dynamsoft.DWT.ProductKey = 't0107KwEAAFqHOzuiG0pkbu8UHkUGeOSoaezN9f0x+c7plsWGSCA28VNFZFgj71h2GachA/emFbGgAT3emZ8dQmmIu1Wg2A5UAHk4fwDOvVYEC34dWi6egGFy6ICtAAn9z6svMviWPNJ4ABlIPoA=';
     Dynamsoft.DWT.Containers = [
       { ContainerId: "dwtcontrolContainer", Width: "550px", Height: "513px" },
     ];
@@ -70,8 +70,12 @@ export default {
     // Load Images
     loadImage() {
       this.DWObject.IfShowFileDialog = true;
-      this.DWObject.Addon.PDF.SetResolution(300);
-      this.DWObject.Addon.PDF.SetConvertMode(Dynamsoft.DWT.EnumDWT_ConvertMode.CM_RENDERALL);
+      this.DWObject.Addon.PDF.SetReaderOptions({
+        convertMode: Dynamsoft.DWT.EnumDWT_ConvertMode.CM_RENDERALL,
+        renderOptions: {
+            resolution: 300
+        }
+      });
       this.DWObject.LoadImageEx("", 5);
     },
 
