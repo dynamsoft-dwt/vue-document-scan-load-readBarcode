@@ -28,7 +28,7 @@ export default {
   data() {
     return {
       title: "Using Dynamic Web TWAIN in Vue Project",
-      DWObject: false,
+      DWTObject: false,
       dbrObject: false,
     };
   },
@@ -51,22 +51,22 @@ export default {
       { ContainerId: "dwtcontrolContainer", Width: "550px", Height: "513px" },
     ];
     Dynamsoft.DWT.RegisterEvent("OnWebTwainReady", () => {
-      this.Dynamsoft_OnReady();
+      this.DWTObject_OnReady();
     });
   },
   mounted() {
     Dynamsoft.DWT.Load();
   },
   methods: {
-    Dynamsoft_OnReady() {
-      this.DWObject = Dynamsoft.DWT.GetWebTwain("dwtcontrolContainer");
+    DWTObject_OnReady() {
+      this.DWTObject = Dynamsoft.DWT.GetWebTwain("dwtcontrolContainer");
     },
 
     // Acquire Image
     acquireImage() {
-      this.DWObject.SelectSourceAsync()
+      this.DWTObject.SelectSourceAsync()
         .then(
-          () => {return this.DWObject.AcquireImageAsync({
+          () => {return this.DWTObject.AcquireImageAsync({
             IfDisableSourceAfterAcquire: true
           })}
         )
@@ -77,24 +77,24 @@ export default {
 
     // Load Images
     loadImage() {
-      this.DWObject.IfShowFileDialog = true;
-      this.DWObject.Addon.PDF.SetReaderOptions({
+      this.DWTObject.IfShowFileDialog = true;
+      this.DWTObject.Addon.PDF.SetReaderOptions({
         convertMode: Dynamsoft.DWT.EnumDWT_ConvertMode.CM_RENDERALL,
         renderOptions: {
             resolution: 300
         }
       });
-      this.DWObject.LoadImageEx("", 5);
+      this.DWTObject.LoadImageEx("", 5);
     },
 
     // Read Barcode
     async readBarcode() {
-      if (this.DWObject) {
-        if (this.DWObject.HowManyImagesInBuffer == 0) {
+      if (this.DWTObject) {
+        if (this.DWTObject.HowManyImagesInBuffer == 0) {
           alert("Please scan or load an image first.");
           return;
         }
-        const settings = await this.DWObject.Addon.BarcodeReader.getRuntimeSettings();
+        const settings = await this.DWTObject.Addon.BarcodeReader.getRuntimeSettings();
         /**
          * Setting up the barcode reader
          */
@@ -104,10 +104,10 @@ export default {
         settings.expectedBarcodesCount = 512;
         settings.scaleDownThreshold = 48000;
         /** End of settings */
-        await this.DWObject.Addon.BarcodeReader.updateRuntimeSettings(settings);
-        const index = this.DWObject.CurrentImageIndexInBuffer;
+        await this.DWTObject.Addon.BarcodeReader.updateRuntimeSettings(settings);
+        const index = this.DWTObject.CurrentImageIndexInBuffer;
         const objDiv = document.getElementById("divNoteMessage");
-        this.DWObject.Addon.BarcodeReader.decode(index).then(
+        this.DWTObject.Addon.BarcodeReader.decode(index).then(
           function (results) {
             //This is the function called when barcode is read successfully
             //Retrieve barcode details
