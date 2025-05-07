@@ -60,6 +60,16 @@ export default {
   methods: {
     DWTObject_OnReady() {
       this.DWTObject = Dynamsoft.DWT.GetWebTwain("dwtcontrolContainer");
+
+      // from v19.0
+      this.DWTObject.Addon.PDF.SetReaderOptions({
+        convertMode: Dynamsoft.DWT.EnumDWT_ConvertMode.CM_RENDERALL,
+        renderOptions: {
+            renderAnnotations: true,
+            resolution: 300
+        },
+        preserveUnmodifiedOnSave: true
+      });
     },
 
     // Acquire Image
@@ -78,12 +88,6 @@ export default {
     // Load Images
     loadImage() {
       this.DWTObject.IfShowFileDialog = true;
-      this.DWTObject.Addon.PDF.SetReaderOptions({
-        convertMode: Dynamsoft.DWT.EnumDWT_ConvertMode.CM_RENDERALL,
-        renderOptions: {
-            resolution: 300
-        }
-      });
       this.DWTObject.LoadImageEx("", 5);
     },
 
